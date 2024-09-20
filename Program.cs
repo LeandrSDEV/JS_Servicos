@@ -1,3 +1,6 @@
+using JS_Serviços.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace JS_Serviços
 {
     public class Program
@@ -8,6 +11,8 @@ namespace JS_Serviços
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<BancoContext>(
+                   options => options.UseMySql(builder.Configuration.GetConnectionString("DataBase"), new MySqlServerVersion(new Version(8, 0, 39))));
 
             var app = builder.Build();
 

@@ -16,6 +16,7 @@ namespace JS_Serviços
                    options => options.UseMySql(builder.Configuration.GetConnectionString("DataBase"), new MySqlServerVersion(new Version(8, 0, 39))));
 
             builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+            builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             
             var app = builder.Build();
 

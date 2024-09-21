@@ -1,4 +1,5 @@
-﻿namespace JS_Serviços.Models
+﻿
+namespace JS_Serviços.Models
 {
     public class ContatoModel
     {

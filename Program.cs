@@ -1,4 +1,5 @@
 using JS_Serviços.Data;
+using JS_Serviços.Repositorio;
 using Microsoft.EntityFrameworkCore;
 
 namespace JS_Serviços
@@ -14,6 +15,8 @@ namespace JS_Serviços
             builder.Services.AddDbContext<BancoContext>(
                    options => options.UseMySql(builder.Configuration.GetConnectionString("DataBase"), new MySqlServerVersion(new Version(8, 0, 39))));
 
+            builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

@@ -15,6 +15,10 @@ namespace JS_Serviços.Repositorio
         {
             return _bancoContext.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
         }
+        public UsuarioModel BuscarPorEmailELogin(string email, string login)
+        {
+            return _bancoContext.Usuarios.FirstOrDefault(x => x.Email.ToUpper() == email.ToUpper() && x.Login.ToUpper() == login.ToUpper());
+        }
 
         public UsuarioModel ListarPorId(int id)
         {
@@ -27,6 +31,7 @@ namespace JS_Serviços.Repositorio
         public UsuarioModel Adicionar(UsuarioModel usuario)
         {
             usuario.DataCadastro = DateTime.Now;
+            usuario.SetSenhaHash();
             _bancoContext.Usuarios.Add(usuario);
             _bancoContext.SaveChanges();
             return usuario;

@@ -1,4 +1,5 @@
 ﻿using JS_Serviços.Enums;
+using JS_Serviços.Helper;
 using System.ComponentModel.DataAnnotations;
 
 namespace JS_Serviços.Models
@@ -22,7 +23,19 @@ namespace JS_Serviços.Models
 
         public bool SenhaValida(string senha)
         {
-            return Senha == senha;
+            return Senha == senha.GerarHash();
+        }
+
+        public void SetSenhaHash()
+        {
+            Senha = Senha.GerarHash();
+        }
+
+        public string GerarNovaSenha()
+        {
+            string novaSenha = Guid.NewGuid().ToString().Substring(0,8);
+            Senha = novaSenha.GerarHash();
+            return novaSenha;
         }
     }
 }

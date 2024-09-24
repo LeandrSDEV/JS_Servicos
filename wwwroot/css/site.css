@@ -31,3 +31,9 @@ html {
     height: 31px;
 }
 
+.text-gradient {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    -webkit-background-clip: text;
+    font-weight:bold;
+}
+
